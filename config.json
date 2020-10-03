@@ -1,0 +1,66 @@
+{
+    "RFID":
+    {
+        "topic": "test/tags"
+    },
+
+    "Encoder":
+    [
+        {
+            "type": "volume",
+            "Name": "Volume",
+            "gpioA": 24, 
+            "gpioB": 25,
+            "min": 0,
+            "max": 80,
+            "step": 1,
+            "initial": 40,
+            "debounceTimeout": 10
+        },
+        {
+            "type": "generic",
+            "Name": "Encoder2",
+            "gpioA": 5, 
+            "gpioB": 12,
+            "min": 0,
+            "max": 255,
+            "step": 1,
+            "initial": 0,
+            "debounceTimeout": 10
+        },
+        {
+            "type": "generic",
+            "Name": "Encoder3",
+            "gpioA": 19, 
+            "gpioB": 13,
+            "min": 0,
+            "max": 255,
+            "step": 1,
+            "initial": 0,
+            "debounceTimeout": 10
+        }
+    ],
+
+    "Button":
+    [
+        { "Name": "btnE1", "Pin": 23 },
+        { "Name": "btnE2", "Pin": 6 },
+        { "Name": "btnE3", "Pin": 16 },
+
+        { "Name": "btn1", "Pin": 20 },
+        { "Name": "btn2", "Pin": 26 },
+        { "Name": "btn3", "Pin": 21 },
+        { "Name": "btn4", "Pin": 17 },
+        { "Name": "btn5", "Pin": 27 },
+        { "Name": "btn6", "Pin": 22 },
+
+        { "Name": "DOS", "Pin": 15 }
+    ],
+
+    "Lock": 4,
+
+    "WS2812":{
+        "Length": 100,
+        "Pin": 18
+    }
+}

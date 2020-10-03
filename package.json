@@ -1,0 +1,36 @@
+{
+  "name": "coffe-table",
+  "version": "2.0.0",
+  "description": "Coffee Table controls that integrate into Home Assistant",
+  "main": "main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitbrain-za/coffee-table-v2.git"
+  },
+  "keywords": [
+    "HomeAssistant"
+  ],
+  "author": "Philip Barlow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitbrain-za/coffee-table-v2/issues"
+  },
+  "homepage": "https://github.com/bitbrain-za/coffee-table-v2#readme",
+  "dependencies": {
+    "bufferutil": "^4.0.1",
+    "color-temp": "0.0.2",
+    "eiscp": "^0.2.0",
+    "mqtt": "^4.2.1",
+    "node-hid": "^1.3.1",
+    "onoff": "^6.0.0",
+    "rpi-ws281x": "^1.0.34",
+    "utf-8-validate": "^5.0.2",
+    "winston": "^3.3.3"
+  }
+}
