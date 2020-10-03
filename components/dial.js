@@ -3,6 +3,7 @@ const network = require("network");
 const fs = require("fs");
 const { EventEmitter } = require("events");
 const encoder = require("../lib/encoder_value");
+const logger = require('winston');
 
 module.exports = class {
   constructor(config_path, config) {
@@ -48,7 +49,7 @@ module.exports = class {
     };
     this.client = mqtt.connect(`mqtt://${this.mqttConf.broker}`, options);
     this.client.on("error", (error) => {
-      console.log("Can't connect: " + error);
+      logger.error("Can't connect: " + error);
     });
   }
 

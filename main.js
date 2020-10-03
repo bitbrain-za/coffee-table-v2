@@ -2,8 +2,9 @@
 Config
 */
 
+const logger = require("./logger.js");
 const fs = require("fs");
-const rawData = fs.readFileSync("./config.json");
+const rawData = fs.readFileSync("./config/config.json");
 config = JSON.parse(rawData);
 const MQTT_CONFIG = "./mqtt_conf.json";
 
@@ -13,16 +14,16 @@ Buttons
 
 const binarySensor = require("./components/button");
 config.Button.forEach(function (entry) {
-  console.log(entry);
+  logger.info(entry);
   var button = new binarySensor(MQTT_CONFIG, entry.Pin, entry.Name);
 
-  button.emitter.on("click", (val) => console.log(val));
+  // button.emitter.on("click", (val) => logger.info(val));
 });
 
 const sensor = require("./components/dial");
 const volume = require("./components/volume");
 config.Encoder.forEach(function (entry) {
-  console.log(entry);
+  logger.info(entry);
   switch (entry.type) {
     case "generic":
       var dial = new sensor(MQTT_CONFIG, entry);
@@ -32,7 +33,7 @@ config.Encoder.forEach(function (entry) {
     case "volume":
       var vol = new volume(MQTT_CONFIG, entry);
       vol.emitter.on("connect", (val) =>
-        console.log(`Onkyo connected at ${val}`)
+        logger.info(`Onkyo connected at ${val}`)
       );
       vol.emitter.on("value", (val) => pixel.gauge(val));
       break;
@@ -64,16 +65,16 @@ let mqttOptions = {
 rfidClient = mqtt.connect(`mqtt://${mqttConf.broker}`, mqttOptions);
 
 rfidClient.on("connect", () => {
-  console.log("RFID MQTT connected");
+  logger.info("RFID MQTT connected");
 });
 
 rfidClient.on("error", (error) => {
-  console.log("Can't connect: " + error);
+  logger.info("Can't connect: " + error);
 });
 
 const rfidEmitter = rfid();
 rfidEmitter.on("tag", (tag) => {
-  console.log("Tag: " + tag);
+  logger.info("Tag: " + tag);
   rfidClient.publish(config.RFID.topic, tag);
 });
 
@@ -92,7 +93,7 @@ const www = require("./www/index");
 const web = www();
 
 web.on("animation-request", (animation) => {
-  console.log(animation);
+  logger.info(animation);
   switch (animation) {
     case "fire":
       pixel.Fire();
@@ -113,20 +114,20 @@ web.on("animation-request", (animation) => {
 });
 
 web.on("rgb-request", (rgb) => {
-  console.log(rgb);
+  logger.info(rgb);
   const hexColour = Number("0x" + rgb);
   const r = hexColour >> 16;
   const g = (hexColour >> 8) & 0xff;
   const b = hexColour & 0xff;
-  console.log(hexColour);
-  console.log(r);
-  console.log(g);
-  console.log(b);
+  logger.info(hexColour);
+  logger.info(r);
+  logger.info(g);
+  logger.info(b);
   pixel.setColour(r, g, b, true, 0);
 });
 
 web.on("admin-request", (request) => {
-  console.log(request);
+  logger.info(request);
 });
 
 /*

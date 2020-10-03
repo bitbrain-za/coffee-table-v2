@@ -2,6 +2,7 @@ const mqtt = require("mqtt");
 const fs = require("fs");
 const { EventEmitter } = require("events");
 const network = require("network");
+const logger = require('winston');
 
 module.exports = class {
   constructor(config_path) {
@@ -44,21 +45,19 @@ module.exports = class {
     this.client = mqtt.connect(`mqtt://${this.mqttConf.broker}`, options);
 
     this.client.on("connect", () => {
-      console.log("MQTT connected");
+      logger.info("MQTT connected");
       this.client.publish(this.stateTopic, "alive");
       this.update({state:'OFF'});
     });
 
     this.client.on("error", (error) => {
-      console.log("Can't connect: " + error);
+      loggger.erro("Can't connect: " + error);
     });
 
     this.client.on("message", (topic, message) => {
       if (topic === this.commandTopic) {
         let cmd = JSON.parse(message.toString("utf8"));
-        console.log("Command Received");
-        console.log(cmd);
-
+        logger.info("Command Received\n" + cmd);
         this.emitter.emit("state", cmd);
       }
     });

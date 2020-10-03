@@ -5,6 +5,7 @@ const { EventEmitter } = require("events");
 const encoder = require("../lib/encoder_value");
 const receiver = require("eiscp");
 const util = require("util");
+const logger = require('winston');
 
 module.exports = class {
   constructor(config_path, config) {
@@ -58,7 +59,7 @@ module.exports = class {
     };
     this.client = mqtt.connect(`mqtt://${this.mqttConf.broker}`, mqtt_options);
     this.client.on("error", (error) => {
-      console.log("Can't connect: " + error);
+      logger.error("Can't connect: " + error);
     });
 
     this.enabled = true;

@@ -2,6 +2,7 @@ const mqtt = require("mqtt");
 const network = require("network");
 const fs = require('fs');
 const { EventEmitter } = require("events");
+const logger=require('winston');
 const Gpio = require("onoff").Gpio; //include onoff to interact with the GPIO
 
 module.exports = class {
@@ -46,7 +47,7 @@ module.exports = class {
     };
     this.client = mqtt.connect(`mqtt://${this.mqttConf.broker}`, options);
     this.client.on("error", (error) => {
-      console.log("Can't connect: " + error);
+      logger.error("Can't connect: " + error);
     });
 
   }

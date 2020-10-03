@@ -2,6 +2,7 @@ const { EventEmitter } = require('events');
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const logger = require('winston');
 
 module.exports = () => {
   const emitter = new EventEmitter();
@@ -88,7 +89,7 @@ module.exports = () => {
   });
 
   app.listen(port, () => {
-    console.log(`Express server listening on port ${port}`);
+    logger.info(`Express server listening on port ${port}`);
   });
 
   app.post('/animation-request', (req, response) => {
