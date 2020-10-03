@@ -1,51 +1,81 @@
 /* 
 Config
 */
+
 const fs = require("fs");
 const rawData = fs.readFileSync("./config.json");
 config = JSON.parse(rawData);
+const MQTT_CONFIG = "./mqtt_conf.json";
 
 /*
 Buttons
 */
 
-const binarySensor = require('./components/button');
-config.Button.forEach(function(entry) {
-    console.log(entry);
-    var button = new binarySensor("./mqtt_conf.json", entry.Pin, entry.Name);
+const binarySensor = require("./components/button");
+config.Button.forEach(function (entry) {
+  console.log(entry);
+  var button = new binarySensor(MQTT_CONFIG, entry.Pin, entry.Name);
 
-    button.emitter.on("click", (val) => console.log(val));
+  button.emitter.on("click", (val) => console.log(val));
 });
 
-const sensor = require('./components/dial');
-const volume = require('./components/volume');
-config.Encoder.forEach(function(entry) {
-    console.log(entry);
-    switch(entry.type)
-    {
-      case "generic":
-        var dial = new sensor("./mqtt_conf.json", entry);
-        dial.emitter.on("value", (val) => pixel.gauge(val));
-        break;
+const sensor = require("./components/dial");
+const volume = require("./components/volume");
+config.Encoder.forEach(function (entry) {
+  console.log(entry);
+  switch (entry.type) {
+    case "generic":
+      var dial = new sensor(MQTT_CONFIG, entry);
+      dial.emitter.on("value", (val) => pixel.gauge(val));
+      break;
 
-      case "volume":
-        var vol = new volume("./mqtt_conf.json", entry);
-        vol.emitter.on("connect", (val) => console.log(`Onkyo connected at ${val}`));
-        vol.emitter.on("value", (val) => pixel.gauge(val));
-        break;
-    }
+    case "volume":
+      var vol = new volume(MQTT_CONFIG, entry);
+      vol.emitter.on("connect", (val) =>
+        console.log(`Onkyo connected at ${val}`)
+      );
+      vol.emitter.on("value", (val) => pixel.gauge(val));
+      break;
+  }
 });
-
 
 /*
 RFID
 */
 
-// const rfid = require("./lib/rfid");
-// const rfidEmitter = rfid();
-// rfidEmitter.on("tag", tag => {
-//     console.log("Tag: " + tag);
-// });
+const mqtt = require("mqtt");
+const rfid = require("./lib/rfid");
+let mqttConf = {};
+
+if (fs.existsSync(MQTT_CONFIG)) {
+  const rawData = fs.readFileSync(MQTT_CONFIG);
+  mqttConf = JSON.parse(rawData);
+}
+
+let mqttOptions = {
+  port: mqttConf.port,
+  clientId: mqttConf.id + "_" + Math.random().toString(16).substr(2, 8),
+  username: mqttConf.username,
+  password: mqttConf.password,
+  clean: true,
+  reconnectPeriod: 5000,
+};
+
+rfidClient = mqtt.connect(`mqtt://${mqttConf.broker}`, mqttOptions);
+
+rfidClient.on("connect", () => {
+  console.log("RFID MQTT connected");
+});
+
+rfidClient.on("error", (error) => {
+  console.log("Can't connect: " + error);
+});
+
+const rfidEmitter = rfid();
+rfidEmitter.on("tag", (tag) => {
+  console.log("Tag: " + tag);
+  rfidClient.publish(config.RFID.topic, tag);
+});
 
 /*
 Neopixel
@@ -99,13 +129,12 @@ web.on("admin-request", (request) => {
   console.log(request);
 });
 
-
 /*
-MQTT
+Light
 */
 
-const mqtt = require("./components/light");
-var light = new mqtt("./mqtt_conf.json");
+const halight = require("./components/light");
+var light = new halight(MQTT_CONFIG);
 
 light.emitter.on("state", (state) => {
   if (state.state === "ON") {
