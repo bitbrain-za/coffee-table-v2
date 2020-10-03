@@ -39,10 +39,10 @@ module.exports = (gpioA, gpioB) =>
         {
             enabled = false;
             // ~500ms
-            console.time();
+            // console.time();
             receiver.raw(`MVL${hexString}`, () => 
             {
-                console.timeEnd(); 
+                // console.timeEnd(); 
                 enabled = true; 
                 emitter.emit('set', val);
             });

@@ -1,11 +1,41 @@
+/* 
+Config
+*/
+const fs = require("fs");
+const rawData = fs.readFileSync("./config.json");
+config = JSON.parse(rawData);
 
 /*
-Volume
+Buttons
 */
 
-const vol = require("./volume_control")(24, 25);
-vol.on("connect", (val) => console.log(`Onkyo connected at ${val}`));
-vol.on("change", (val) => pixel.gauge(val));
+const binarySensor = require('./components/button');
+config.Button.forEach(function(entry) {
+    console.log(entry);
+    var button = new binarySensor("./mqtt_conf.json", entry.Pin, entry.Name);
+
+    button.emitter.on("click", (val) => console.log(val));
+});
+
+const sensor = require('./components/dial');
+const volume = require('./components/volume');
+config.Encoder.forEach(function(entry) {
+    console.log(entry);
+    switch(entry.type)
+    {
+      case "generic":
+        var dial = new sensor("./mqtt_conf.json", entry);
+        dial.emitter.on("value", (val) => pixel.gauge(val));
+        break;
+
+      case "volume":
+        var vol = new volume("./mqtt_conf.json", entry);
+        vol.emitter.on("connect", (val) => console.log(`Onkyo connected at ${val}`));
+        vol.emitter.on("value", (val) => pixel.gauge(val));
+        break;
+    }
+});
+
 
 /*
 RFID
@@ -22,7 +52,7 @@ Neopixel
 */
 
 const neo = require("./lib/neopixel");
-pixel = new neo(100, 18);
+pixel = new neo(config.WS2812.Length, config.WS2812.Pin);
 
 /*
 Web Interface
@@ -74,10 +104,10 @@ web.on("admin-request", (request) => {
 MQTT
 */
 
-const mqtt = require("./lib/ha_mqtt");
-var talker = new mqtt("./mqtt_conf.json");
+const mqtt = require("./components/light");
+var light = new mqtt("./mqtt_conf.json");
 
-talker.emitter.on("state", (state) => {
+light.emitter.on("state", (state) => {
   if (state.state === "ON") {
     pixel.turnOn();
     if ("color" in state)
@@ -102,5 +132,5 @@ talker.emitter.on("state", (state) => {
   } else {
     pixel.turnOff();
   }
-  talker.update(state);
+  light.update(state);
 });

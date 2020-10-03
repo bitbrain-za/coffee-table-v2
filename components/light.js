@@ -3,7 +3,7 @@ const fs = require("fs");
 const { EventEmitter } = require("events");
 const network = require("network");
 
-module.exports = class HAMQTT{
+module.exports = class {
   constructor(config_path) {
     this.emitter = new EventEmitter();
 
@@ -67,8 +67,8 @@ module.exports = class HAMQTT{
 
   discoveryMessage() {
     const config = {
-      name: this.mqttConf.id,
-      unique_id: this.mqttConf.id + this.mac,
+      name: "Light",
+      unique_id: this.mqttConf.id + this.mac + "_light",
 
       device: {
         identifiers: [`CT${this.mac}`],
