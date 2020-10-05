@@ -15,8 +15,8 @@ module.exports = class {
 
     let eiscp_options = {
       reconnect: true,
-      send_delay: 0,
-      reconnect_sleep: 30,
+      send_delay: 500,
+      reconnect_sleep: 5,
     };
     receiver.connect(eiscp_options);
 

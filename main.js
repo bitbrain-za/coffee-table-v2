@@ -27,7 +27,7 @@ config.Encoder.forEach(function (entry) {
   switch (entry.type) {
     case "generic":
       var dial = new sensor(MQTT_CONFIG, entry);
-      dial.emitter.on("value", (val) => pixel.gauge(val));
+      dial.emitter.on("value", (val) => pixel.gauge(val, entry.min, entry.max));
       break;
 
     case "volume":
@@ -35,7 +35,7 @@ config.Encoder.forEach(function (entry) {
       vol.emitter.on("connect", (val) =>
         logger.info(`Onkyo connected at ${val}`)
       );
-      vol.emitter.on("value", (val) => pixel.gauge(val));
+      vol.emitter.on("value", (val) => pixel.gauge(val, entry.min, entry.max));
       break;
   }
 });

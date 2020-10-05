@@ -7,14 +7,14 @@
     "Encoder":
     [
         {
-            "type": "volume",
-            "Name": "Volume",
+            "type": "generic",
+            "Name": "Encoder1",
             "gpioA": 24, 
             "gpioB": 25,
-            "min": 0,
+            "min": 20,
             "max": 80,
             "step": 1,
-            "initial": 40,
+            "initial": 0,
             "debounceTimeout": 10
         },
         {
@@ -60,7 +60,7 @@
     "Lock": 4,
 
     "WS2812":{
-        "Length": 100,
+        "Length": 55,
         "Pin": 18
     }
 }
