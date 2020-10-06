@@ -50,7 +50,7 @@ module.exports = class {
         this.client.publish(disco.topic, JSON.stringify(disco.message), {
           retain: true,
         });
-        this.client.publish(availability_topic, "online", { retain: true });
+        this.client.publish(this.availability_topic, "online", { retain: true });
       });
     });
 
