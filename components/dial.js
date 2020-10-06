@@ -30,27 +30,32 @@ module.exports = class {
       this.mac = obj.mac_address.split(":").join("");
 
       this.discoveryTopic = `homeassistant/sensor/${this.mqttConf.id}${this.mac}/${this.name}/config`;
+      this.availability_topic = `${this.mqttConf.id}${this.mac}/availability`;
       this.topic = `${this.mqttConf.id}${this.mac}/${this.name}/value`;
       let disco = this.discoveryMessage();
 
-      this.client.publish(disco.topic, JSON.stringify(disco.message), {
-        retain: true,
+      let options = {
+        port: this.mqttConf.port,
+        clientId:
+          this.mqttConf.id + "_" + Math.random().toString(16).substr(2, 8),
+        username: this.mqttConf.username,
+        password: this.mqttConf.password,
+        clean: true,
+        reconnectPeriod: 5000,
+      };
+      this.client = mqtt.connect(`mqtt://${this.mqttConf.broker}`, options);
+      this.client.on("error", (error) => {
+        logger.error("Can't connect: " + error);
+      });
+      
+      this.client.on("connect", () => {
+        this.client.publish(disco.topic, JSON.stringify(disco.message), {
+          retain: true,
+        });
+        this.client.publish(this.availability_topic, "online", { retain: true });
       });
     });
 
-    let options = {
-      port: this.mqttConf.port,
-      clientId:
-        this.mqttConf.id + "_" + Math.random().toString(16).substr(2, 8),
-      username: this.mqttConf.username,
-      password: this.mqttConf.password,
-      clean: true,
-      reconnectPeriod: 5000,
-    };
-    this.client = mqtt.connect(`mqtt://${this.mqttConf.broker}`, options);
-    this.client.on("error", (error) => {
-      logger.error("Can't connect: " + error);
-    });
   }
 
   discoveryMessage() {
@@ -66,6 +71,7 @@ module.exports = class {
         sw_version: "2.0.1",
       },
 
+      availability_topic: this.availability_topic,
       state_topic: this.topic,
       value_template: "{{ value_json.VALUE }}",
       icon: "mdi:adjust",
