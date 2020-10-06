@@ -71,7 +71,7 @@ module.exports = class {
         sw_version: "2.0.1",
       },
 
-      availability_topic: 
+      availability_topic: this.availability_topic,
       state_topic: this.topic,
       value_template: "{{ value_json.VALUE }}",
       icon: "mdi:adjust",
