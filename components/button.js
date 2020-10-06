@@ -81,8 +81,7 @@ module.exports = class {
       state_topic: this.topic,
       value_template: "{{value_json.STATE}}",
       pl_on: "TOGGLE",
-      off_delay: 1,
-      icon: "mdi:electric-switch"
+      off_delay: 1
     };
 
     return {
