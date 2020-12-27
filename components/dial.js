@@ -20,8 +20,7 @@ module.exports = class {
     this.timeoutHandle;
 
     dial.on("change", (val) => {
-      
-			logger.info(val);
+      this.emitter.emit("value", val);
       clearTimeout(this.timeoutHandle);
       this.timeoutHandle = setTimeout(() => {
           let message = {
