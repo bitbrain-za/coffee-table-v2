@@ -10,14 +10,26 @@ module.exports = class {
     this.emitter = new EventEmitter();
     this.name = config.Name;
 
+
+    config = config || {};
+    /* short circuit evaluation */
+    !('debounceTimeout' in config) && (config.debounceTimeout = 1000);
+
     const dial = encoder(config.gpioA, config.gpioB, config);
+    
+    this.timeoutHandle;
 
     dial.on("change", (val) => {
-      let message = {
-        VALUE: val,
-      };
-      this.emitter.emit("value", val);
-      this.client.publish(this.topic, JSON.stringify(message));
+      
+			logger.info(val);
+      clearTimeout(this.timeoutHandle);
+      this.timeoutHandle = setTimeout(() => {
+          let message = {
+            VALUE: val,
+          };
+          this.client.publish(this.topic, JSON.stringify(message));
+        }, config.debounceTimeout);
+
     });
 
     this.mqttConf = {};
