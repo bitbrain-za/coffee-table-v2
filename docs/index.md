@@ -1,37 +1,27 @@
-## Welcome to GitHub Pages
+## Overview
 
-You can use the [editor on GitHub](https://github.com/bitbrain-za/coffee-table-v2/edit/docs/docs/index.md) to maintain and preview the content for your website in Markdown files.
+The project centers around things that bring me joy. Music, very amateur woodworking, learning new technologies and playing with LEDs.
+This is going to be the start of a journey; I love the result, but not so much I can't see it's flaws so please keep an eye out for the polished version to come.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Motivation
 
-### Markdown
+Do you remember the experience of browsing you CD colleciton and coming accross an old favourite you'd forgotten existed?
+Or visiting someone and scanning the titles in their collection? That insight it gave you into their personality?
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+![CDs](images/cds.jpg?raw=true "Ah, nostalgia!")
 
-```markdown
-Syntax highlighted code block
+Streaming services give us so much but I missed the tactile experience of CDs. So this is my attempt to recreate some of that.
 
-# Header 1
-## Header 2
-### Header 3
+### Breakdown
 
-- Bulleted
-- List
+This project touches a couple of fields and technologies. It is not intended for you to have experience with any of it to follow along, a lot of this was also me wanting to learn more about these things. Still, here's what we'll be covering.
 
-1. Numbered
-2. List
+- Embedded code (Node.js)
+- MQTT communications
+- Node red flows
+- A bit of woodworking
+- 3D printing
+- Some minor hardware
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/bitbrain-za/coffee-table-v2/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
