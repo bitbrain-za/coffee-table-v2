@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 The project centers around things that bring me joy. Music, very amateur woodworking, learning new technologies and playing with LEDs.
 This is going to be the start of a journey; I love the result, but not so much I can't see it's flaws so please keep an eye out for the polished version to come.
@@ -8,9 +8,16 @@ This is going to be the start of a journey; I love the result, but not so much I
 Do you remember the experience of browsing you CD colleciton and coming accross an old favourite you'd forgotten existed?
 Or visiting someone and scanning the titles in their collection? That insight it gave you into their personality?
 
-![CDs](images/cds.jpg?raw=true "Ah, nostalgia!")
+|![CDs](images/cds.jpg?raw=true "Ah, nostalgia!")|
+|:--:|
+| <b>What music used to look like</b>|
 
-Streaming services give us so much but I missed the tactile experience of CDs. So this is my attempt to recreate some of that.
+Streaming services give us so much but I missed the tactile experience of CDs. So this is my attempt to recreate some of that. By using RFID cards and a scanner, I can now browse through my favourite albums and play them on demand.
+
+|![Cards](images/albums.jpg?raw=true "Albums")|
+|:--:|
+| <b>Some RFID cards with printed artwork</b>|
+
 
 ### Breakdown
 
@@ -18,10 +25,10 @@ This project touches a couple of fields and technologies. It is not intended for
 
 - Embedded code (Node.js)
 - MQTT communications
-- Node red flows
-- A bit of woodworking
+- [Node red](nodered.md) flows
+- A bit of [woodworking](woodwork.md)
 - 3D printing
-- Some minor hardware
+- Some minor [hardware](hardware.md)
 
 
 
