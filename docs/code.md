@@ -92,6 +92,14 @@ Name the buttons and encoders however you want them to show up in Home Assistant
 
 I've used the LEDs to show the status of the encoders and included a couple of fun effects.
 
+To show the state of the various encoders, I implemented an effect like that shown here.
+
+|![Temperature](images/temperature.gif "Encoder")|
+|:--:|
+| <b>Rotary encoder position indicator</b> |
+
+The effects were pinched from [here](https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/).
+
 ### Web Interface
 
 This was done using express. I am no web developer and pretty much copied examples for this bit. If anyone reading this wants to submit a PR, please do.
