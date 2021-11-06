@@ -71,3 +71,22 @@ I'm using the spotify component to play the album and have configure the receive
 ## Custom Component
 
 You can view the custom component and it's source [here](https://flows.nodered.org/node/node-red-contrib-nook-rfid-album-picker)
+
+## Other Inputs
+
+As well as the RFID tag reader, there are a number of buttons and encoders that can do things...
+
+Because it appears as a collection of sensors in home assistant, you can use it for anything.
+
+Some of the stuff I've got it doing are:
+- adjust lights
+- adjust colume
+- adjust thermostat
+- Play/Pause netflix/spotify
+- Set mood lighting
+- Skip tracks
+- and so on...
+
+|![Other](images/otherflows.png?raw=true "Other flows")|
+|:--:|
+| <b>Like any other sensor</b> |
