@@ -32,5 +32,5 @@ There's an ATTiny85 and IR LED used to emulate a remote control. This was done i
 ## RFID Reader
 
 I was going to recess this but testing showed it was able to pick up a card through the wood without problem so it's just screwed onto the underside. I would suggest testing yours beforehand.
-Also, take a look at the surface before mounting the reader. Pick a feature on the wood and mount below this. I have a clear knot just on the otherside of this that makes it easy to place cards in the correct spot.
+Also, take a look at the surface before mounting the reader. Pick a feature on the wood and mount below this. I have a clear knot just on the other side of this that makes it easy to place cards in the correct spot.
 You could alternatively mark the surface if you so desired.

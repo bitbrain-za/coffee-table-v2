@@ -14,7 +14,7 @@ Or visiting someone and scanning the titles in their collection? That insight it
 |:--:|
 | <b>What music used to look like</b>|
 
-Streaming services give us so much but I missed the tactile experience of CDs. So this is my attempt to recreate some of that. By using RFID cards and a scanner, I can now browse through my favourite albums and play them on demand.
+Streaming services give us so much but I miss the tactile experience of CDs. So this is my attempt to recreate some of that. By using RFID cards and a scanner, I can now browse through my favourite albums and play them on demand.
 
 |![Cards](images/albums.jpg?raw=true "Albums")|
 |:--:|
