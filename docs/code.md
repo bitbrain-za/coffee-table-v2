@@ -1,3 +1,5 @@
+{% include simple-menu.html %}
+
 # Contents
 
 The code is divided into a couple of categories:

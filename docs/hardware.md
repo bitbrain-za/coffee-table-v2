@@ -1,3 +1,5 @@
+{% include simple-menu.html %}
+
 # The Hardware
 
 ## Components Used

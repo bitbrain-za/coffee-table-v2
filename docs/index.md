@@ -1,3 +1,5 @@
+{% include simple-menu.html %}
+
 # Overview
 
 The project centers around things that bring me joy. Music, very amateur woodworking, learning new technologies and playing with LEDs.
@@ -23,12 +25,8 @@ Streaming services give us so much but I missed the tactile experience of CDs. S
 
 This project touches a couple of fields and technologies. It is not intended for you to have experience with any of it to follow along, a lot of this was also me wanting to learn more about these things. Still, here's what we'll be covering.
 
-- Embedded code (Node.js)
-- MQTT communications
+- [Embedded code](code.md) (Node.js)
 - [Node red](nodered.md) flows
 - A bit of [woodworking](woodwork.md)
-- 3D printing
+- [3D printing](printed_parts.md)
 - Some minor [hardware](hardware.md)
-
-
-

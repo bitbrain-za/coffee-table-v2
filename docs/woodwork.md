@@ -1,3 +1,5 @@
+{% include simple-menu.html %}
+
 # Woodwork
 
 Even I can admit that this is pretty ugly. The plan was to something akin to a chest. However, in execution, it looks like a big box. Version 2 will be coming someday with a more sleak look.

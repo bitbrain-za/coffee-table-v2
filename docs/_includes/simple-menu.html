@@ -1,0 +1,8 @@
+<ul>
+  <li {% if page.url contains '/index' %}class="active"{% endif %}><a href="/index/">Overview</a></li>
+  <li {% if page.url contains '/hardware' %}class="active"{% endif %}><a href="/hardware/">Hardware</a></li>
+  <li {% if page.url contains '/nodered' %}class="active"{% endif %}><a href="/nodered/">Node-red Flows</a></li>
+  <li {% if page.url contains '/code' %}class="active"{% endif %}><a href="/code/">Configuration and Home Asssitant Integration</a></li>
+  <li {% if page.url contains '/woodwork' %}class="active"{% endif %}><a href="/woodwork/">Woodwork</a></li>
+  <li {% if page.url contains '/printed_parts' %}class="active"{% endif %}><a href="/printed_parts/">Printed Bits</a></li>
+</ul>

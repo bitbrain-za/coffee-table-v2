@@ -1,3 +1,5 @@
+{% include simple-menu.html %}
+
 # Printed Parts
 
 ## Mounting Hardware

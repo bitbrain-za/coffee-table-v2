@@ -1,3 +1,5 @@
+{% include simple-menu.html %}
+
 # Node Red
 
 ## How it works
