@@ -3,11 +3,11 @@
 # Overview
 
 The project centers around things that bring me joy. Music, very amateur woodworking, learning new technologies and playing with LEDs.
-This is going to be the start of a journey; I love the result, but not so much I can't see it's flaws so please keep an eye out for the polished version to come.
+This is going to be the start of a journey; I love the result, but not so much I can't see its flaws so please keep an eye out for the polished version to come.
 
 ## Motivation
 
-Do you remember the experience of browsing you CD colleciton and coming accross an old favourite you'd forgotten existed?
+Do you remember the experience of browsing you CD colleciton and coming across an old favourite you'd forgotten existed?
 Or visiting someone and scanning the titles in their collection? That insight it gave you into their personality?
 
 |![CDs](images/cds.jpg?raw=true "Ah, nostalgia!")|

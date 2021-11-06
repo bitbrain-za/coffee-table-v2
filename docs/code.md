@@ -15,7 +15,7 @@ The code is divided into a couple of categories:
 
 The idea here was to make the device configurable on the fly. If you want less buttons and more encoders, just modify the config file as you see fit.
 
-Name the buttons and encoders however you want them to show up in Home Assistant and the code will take care of the rest. The device is discoverable and will enumerate your inputs and lights. The topic is unique by MAC address so multiple units can be distuinguished in the same instance.
+Name the buttons and encoders however you want them to show up in Home Assistant and the code will take care of the rest. The device is discoverable and will enumerate your inputs and lights. The topic is unique by MAC address so multiple units can be distinguished in the same instance.
 
 ```json
 {
